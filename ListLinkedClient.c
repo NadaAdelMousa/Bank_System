@@ -8,7 +8,7 @@
 /*********** Preprocessing section **********************/
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 
 typedef struct client
 {
@@ -51,18 +51,18 @@ int List_intSize(List* pl);
 int main()
 {
     List l;
-    char name[50];
-   char address[50];
-   char n_id[15];
-   int age;
-   char gn_id[15];
-   char status[12];
-   double balance;
-   unsigned long account_id;
-   char password[11];
+    char name[50]="Mohamed Salah Hamed Mahrous";
+   char address[50]="Hussien Wassef, From El-Dokki st, Giza";
+   char n_id[15]="29805070100179";
+   int age=25;
+   char gn_id[15]="29805070100179";
+   char status[12]="Restricted";
+   double balance=75000;
+   unsigned long account_id=1000000000;
+   char password[11]="6 Hussien Wassef, From El-Dokki st, Giza";
 
 
-   name="Mohamed Salah Hamed Mahrous";
+   /*name="Mohamed Salah Hamed Mahrous";
    address="Hussien Wassef, From El-Dokki st, Giza";
    n_id="29805070100179";
    age=25;
@@ -70,7 +70,7 @@ int main()
    status="Restricted";
    balance=75000;
    account_id=1000000000;
-   password="6 Hussien Wassef, From El-Dokki st, Giza";
+   password="6 Hussien Wassef, From El-Dokki st, Giza";*/
 
    List_voidInti(&l);
    List_voidInsertList(0,&l,name,address,n_id,age,gn_id,status,balance,account_id,password);
@@ -92,15 +92,15 @@ void List_voidInsertList(int pos, List* pl,char name[50],char address[50],char n
 { 
     Client* pn = (Client*)malloc(sizeof(Client));
     // insert data
-    pn->Full_Name= name;
-    pn->Full_Address=address;
-    pn->National_ID=national_id;
+    strcpy(pn->Full_Name, name);
+    strcpy(pn->Full_Address,address);
+    strcpy(pn->National_ID,national_id);
     pn->Age=age;
-    pn->Guardian_National_ID=gn_id;
-    pn->Account_Status=status;
+    strcpy(pn->Guardian_National_ID,gn_id);
+    strcpy(pn->Account_Status,status);
     pn->Balance=balance;
     pn->Bank_Account_ID=account_id;
-    pn->Password=passward;
+    strcpy(pn->Password,passward);
 
     pn->next=NULL;
     if(pos == 0)
